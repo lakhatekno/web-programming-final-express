@@ -45,18 +45,24 @@ app.get('/detail/:id', (req, res) => {
 });
 
 app.post('/cart', (req, res) => {
+    const subt = req.body.qty*req.body.price
     const item = {
         name: req.body.name,
         price: req.body.price,
-        qty: req.body.qty
+        qty: req.body.qty,
+        sub: subt
     };
     
     if(!req.session.cart) {
         req.session.cart = [];
+        req.session.total = 0
     }
-    
     req.session.cart.push(item);
-    res.render('cart', {items: req.session.cart});
+    req.session.total += subt
+    res.render('cart', {
+        items: req.session.cart,
+        total: req.session.total
+    });
 });
 
 app.get('/kill', (req, res) => {

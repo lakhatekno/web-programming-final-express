@@ -11,13 +11,10 @@ html
             th="Price"
             th="QTY"
             th="Subtotal"
-            let(style="display:none;") #{total=0}
             each i in items 
                 tr 
                     td=i.name 
                     td=i.price
                     td=i.qty
-                    td
-                        let #{sub=i.price*i.qty}
-                    td(style="display: none;") #{total+=sub}
-        h2 #{total}
+                    td=i.sub
+        h2=total
