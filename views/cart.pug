@@ -1,0 +1,23 @@
+html 
+    header 
+        ul 
+            li 
+                a(href="/")="Home/Category"
+            li 
+                a(href="/kill")="End Session"
+    body 
+        table(border="1px")
+            th="Name"
+            th="Price"
+            th="QTY"
+            th="Subtotal"
+            let(style="display:none;") #{total=0}
+            each i in items 
+                tr 
+                    td=i.name 
+                    td=i.price
+                    td=i.qty
+                    td
+                        let #{sub=i.price*i.qty}
+                    td(style="display: none;") #{total+=sub}
+        h2 #{total}

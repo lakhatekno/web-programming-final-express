@@ -1,0 +1,18 @@
+html 
+    header 
+        ul 
+            li 
+                a(href="/")="Home/Category"
+            li 
+                a(href="/kill")="End Session"
+    body 
+        table(border="1px")
+            th="ID"
+            th="Name"
+            th="Price"
+            each p in produk 
+                tr 
+                    td=p.ProductID 
+                    td
+                        a(href="/detail/" + p.ProductID)=p.ProductName
+                    td=p.UnitPrice 

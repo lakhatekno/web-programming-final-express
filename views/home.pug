@@ -1,0 +1,14 @@
+html 
+    header 
+        ul 
+            li 
+                a(href="/")="Home/Category"
+            li 
+                a(href="/kill")="End Session"
+    body 
+        table(border="1px")
+            th="Category"
+            each k in kategori 
+                tr
+                    td 
+                        a(href="/products/" + k.CategoryID)=k.CategoryName

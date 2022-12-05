@@ -1,0 +1,40 @@
+html 
+    header 
+        ul 
+            li 
+                a(href="/")="Home/Category"
+            li 
+                a(href="/kill")="End Session"
+    body 
+        table(border="1px")
+            th="ID"
+            th="Name"
+            th="Category"
+            th="Qty per Unit"
+            th="Price"
+            th="Stock"
+            th="On Order"
+            th="Reoder Level"
+            th="Discontinued"
+            tr 
+                td=data.ProductID 
+                td=data.ProductName
+                td=data.CategoryName 
+                td=data.QuantityPerUnit
+                td=data.UnitPrice
+                td=data.UnitsInStock
+                td=data.UnitsOnOrder
+                td=data.ReorderLevel 
+                if data.Discontinued==0
+                    td='No'
+                else 
+                    td='Yes'
+        br
+        form(method="POST", action="/cart")
+            input(hidden, name="name", value=data.ProductName)
+            input(hidden, name="price", value=data.UnitPrice)
+            label="qty: "
+            input(type="number", name="qty")
+            br
+            br
+            input(type="submit", value="add to cart")
